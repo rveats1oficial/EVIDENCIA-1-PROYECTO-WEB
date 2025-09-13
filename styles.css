@@ -1,0 +1,263 @@
+:root {
+  --primary: #000000;      /* Fondo principal negro */
+  --secondary: #FFFFFF;    /* Texto principal blanco */
+  --accent: #673AB7;       /* Púrpura para acentos y botones */
+  --blue: #1A237E;         /* Azul para detalles */
+  --gray: #B0BEC5;         /* Gris azulado para detalles */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+body {
+  display: block; /* quitamos el centrado vertical */
+}
+
+/* Contenedor principal */
+.card, .sobre-card, .proyectos-card {
+  min-height: 90vh;
+  min-width: 60vw;
+  max-width: 900px;
+  background: var(--primary);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(103,58,183,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  position: relative;
+  overflow: hidden;
+  color: var(--secondary);
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navbar nav a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--gray);
+  font-family: 'Roboto Mono', monospace;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.navbar nav a:hover {
+  color: var(--accent);
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  background: var(--blue);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 4px solid var(--accent);
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.profile-info h1, .sobre-card h1, .proyectos-card h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.7rem;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+.statement, .sobre-card p, .proyectos-card p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 700px;
+  word-break: break-word;
+  color: var(--secondary);
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.socials a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.5em 1.5em;
+  border-radius: 24px;
+  background: var(--primary);
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+  border: 2px solid var(--accent);
+}
+
+.socials a:hover {
+  background: var(--accent);
+  color: var(--secondary);
+}
+
+.player {
+  margin-top: 1.2rem;
+  text-align: center;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.player button {
+  background: var(--accent);
+  color: var(--secondary);
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  margin: 0.5rem 0;
+  display: inline-block;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(103,58,183,0.10);
+}
+
+.player button:hover {
+  background: var(--blue);
+  color: var(--secondary);
+}
+
+/* Sección de contacto */
+.contact-section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: var(--primary);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(103,58,183,0.10);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  display: none;
+  position: relative;
+  left: 0;
+  right: 0;
+  color: var(--secondary);
+}
+
+.contact-section.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.contact-section h2 {
+  margin-top: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.contact-section .email {
+  font-size: 1.3rem;
+  color: var(--blue);
+  font-family: 'Roboto Mono', monospace;
+  word-break: break-all;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7em 2em;
+  background: var(--accent);
+  color: var(--secondary);
+  border-radius: 24px;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+  border: none;
+}
+
+.back-link:hover {
+  background: var(--blue);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 900px) {
+  .card, .sobre-card, .proyectos-card {
+    min-width: 95vw;
+    padding: 1.5rem 0.5rem;
+  }
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+  .profile-info h1, .sobre-card h1, .proyectos-card h1 {
+    font-size: 2rem;
+  }
+  .statement, .sobre-card p, .proyectos-card p {
+    font-size: 1rem;
+  }
+  .player button {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  .contact-section {
+    max-width: 95vw;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre mí - RVEATS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: var(--primary);
+      color: var(--secondary);
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      overflow-x: hidden;
+    }
+    #bg-stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .sobre-card {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-stars"></canvas>
+  <div class="sobre-card">
+    <h1>Sobre mí</h1>
+    <p>
+      Originario de Aguascalientes, México, RVEATS es un beatmaker en ascenso cuyo interés en la música comenzó en 2020. Inspirado por productores legendarios como Kanye West, Mike Dean y Mac Miller.<br><br>
+      RVEATS rápidamente encontró su lugar en el mundo de la música. En 2024, se mudó a Querétaro, México, para continuar sus proyectos musicales.<br><br>
+      El espíritu colaborativo de RVEATS es evidente en su trabajo. Su primera colaboración oficial fue con el talentoso artista DXRK$AN (con quien fueron sus primeros lanzamientos), y posteriormente contribuyó al EP del artista Cortés, demostrando sus versátiles habilidades de producción en la canción titulada REINA DE DIAMANTES.
+    </p>
+    <a href="index.html" class="back-link">Volver al inicio</a>
+  </div>
+  <script>
+    // Partículas espaciales
+    const canvas = document.getElementById('bg-stars');
+    const ctx = canvas.getContext('2d');
+    let w, h, stars = [];
+
+    function resize() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function createStars(num) {
+      stars = [];
+      for (let i = 0; i < num; i++) {
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 1.2 + 0.3,
+          alpha: Math.random() * 0.5 + 0.5,
+          speed: Math.random() * 0.15 + 0.05
+        });
+      }
+    }
+    createStars(180);
+
+    function drawStars() {
+      ctx.clearRect(0, 0, w, h);
+      for (let star of stars) {
+        ctx.save();
+        ctx.globalAlpha = star.alpha;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fff";
+        ctx.shadowColor = "#fff";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+
+        // Movimiento lento hacia abajo
+        star.y += star.speed;
+        if (star.y > h) {
+          star.y = 0;
+          star.x = Math.random() * w;
+        }
+      }
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  </script>
+</body>
+</html>
